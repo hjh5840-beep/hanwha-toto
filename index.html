@@ -236,7 +236,7 @@ const BIN_NAME = "hanwha-ga-toto";
 const ADMIN_PW = "hanwha2026";
 const POLL_MS = 5000;
 
-let binId = null;
+let binId = "6a2b5b4eda38895dfeb1d32a";
 let allVotes = [];
 let finalResult = null;
 let pendingVote = null;
@@ -263,8 +263,7 @@ async function initBin() {
 }
 
 async function ensureBin() {
-  binId = localStorage.getItem("toto_bin_id");
-  if (!binId) await initBin();
+  // bin ID is fixed
 }
 
 async function loadData() {
@@ -419,9 +418,7 @@ async function setResult() {
 async function resetAll() {
   if (!confirm("모든 투표를 초기화할까요?")) return;
   allVotes = []; finalResult = null;
-  localStorage.removeItem("toto_bin_id");
-  binId = null;
-  await initBin();
+  // keep fixed bin ID
   renderStats(); renderVotesList();
   showToast("초기화 완료");
 }
