@@ -6,134 +6,180 @@
 <title>한화손보 GA지원팀 토토</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f4f4f4;min-height:100vh;}
-.wrap{max-width:420px;margin:0 auto;padding-bottom:3rem;background:#f4f4f4;min-height:100vh;}
-.pitch-header{background:#1a5c2a;padding:0 0 1.25rem;border-radius:0 0 20px 20px;overflow:hidden;}
-.pitch-content{padding:0 1.25rem;}
-.pitch-badge{font-size:11px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
-.pitch-title{font-size:21px;font-weight:700;color:#fff;margin-bottom:2px;}
-.pitch-sub{font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:12px;}
-.pitch-meta{display:flex;gap:14px;}
-.pitch-meta-item{font-size:12px;color:rgba(255,255,255,0.8);display:flex;align-items:center;gap:4px;}
-.match-card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:1.25rem;margin:1rem 1rem 0.75rem;}
-.match-vs{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin-bottom:10px;}
-.match-team{text-align:center;}
-.match-flag{font-size:34px;margin-bottom:4px;}
-.match-name{font-size:13px;font-weight:700;color:#111;}
-.match-rank{font-size:11px;color:#888;}
-.vs-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;}
-.vs-text{font-size:14px;font-weight:700;color:#888;}
-.kickoff-pill{background:#1a5c2a;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:99px;}
-.match-footer{border-top:1px solid #f0f0f0;padding-top:8px;font-size:11px;color:#aaa;text-align:center;}
-.pool-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 1rem 0.75rem;}
-.stat-card{background:#1a5c2a;border-radius:8px;padding:.75rem 1rem;}
-.stat-label{font-size:11px;color:rgba(255,255,255,.65);margin-bottom:4px;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e1a;min-height:100vh;}
+.wrap{max-width:420px;margin:0 auto;padding-bottom:3rem;background:#0a0e1a;min-height:100vh;}
+
+/* ── 히어로 헤더 ── */
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#0d1b3e 0%,#1a3a6e 40%,#c8102e 100%);padding:0;}
+.hero-bg{position:absolute;inset:0;opacity:0.07;}
+.hero-content{position:relative;z-index:2;padding:1.5rem 1.25rem 1.25rem;}
+.wc-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:99px;padding:4px 12px;font-size:11px;font-weight:600;color:rgba(255,255,255,0.85);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;}
+.wc-badge-dot{width:6px;height:6px;background:#f5c842;border-radius:50%;animation:blink 1.2s infinite;}
+
+.matchup{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.matchup-team{text-align:center;flex:1;}
+.matchup-flag{width:56px;height:42px;object-fit:cover;border-radius:6px;border:2px solid rgba(255,255,255,0.25);margin-bottom:6px;display:block;margin-left:auto;margin-right:auto;}
+.matchup-name{font-size:14px;font-weight:700;color:#fff;}
+.matchup-rank{font-size:10px;color:rgba(255,255,255,0.5);margin-top:2px;}
+.matchup-center{display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 8px;}
+.vs-text{font-size:22px;font-weight:800;color:#fff;letter-spacing:0.05em;}
+.kickoff-badge{background:#f5c842;color:#0a0e1a;font-size:10px;font-weight:800;padding:3px 10px;border-radius:99px;letter-spacing:0.04em;}
+
+.hero-divider{height:1px;background:rgba(255,255,255,0.12);margin-bottom:12px;}
+.hero-meta{display:flex;gap:16px;}
+.hero-meta-item{font-size:11px;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:5px;}
+
+/* ── 스탯 카드 ── */
+.pool-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 1rem;}
+.stat-card{background:linear-gradient(135deg,#1a2744,#0f1c35);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:.85rem 1rem;}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:4px;}
 .stat-value{font-size:20px;font-weight:700;color:#fff;}
-.tab-row{display:flex;margin:0 1rem 1rem;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;}
-.tab-btn{flex:1;padding:9px;font-size:13px;background:#fff;border:none;cursor:pointer;color:#888;font-family:inherit;}
-.tab-btn.active{background:#1a5c2a;color:#fff;font-weight:700;}
-.section-title{font-size:11px;font-weight:700;color:#aaa;padding:0 1rem;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em;}
-.score-input-wrap{margin:0 1rem 1rem;background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:1.25rem 1rem;}
-.score-row{display:grid;grid-template-columns:1fr 28px 1fr;align-items:end;gap:6px;margin-bottom:8px;}
+
+/* ── 탭 ── */
+.tab-row{display:flex;margin:0 1rem 1rem;background:#111827;border-radius:10px;padding:3px;gap:3px;}
+.tab-btn{flex:1;padding:8px;font-size:13px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.45);font-family:inherit;border-radius:8px;font-weight:600;transition:all .15s;}
+.tab-btn.active{background:linear-gradient(135deg,#1a3a6e,#c8102e);color:#fff;}
+
+/* ── 섹션 타이틀 ── */
+.section-title{font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);padding:0 1rem;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;}
+
+/* ── 스코어 입력 ── */
+.score-input-wrap{margin:0 1rem 1rem;background:#111827;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1.25rem 1rem;}
+.score-row{display:grid;grid-template-columns:1fr 28px 1fr;align-items:end;gap:6px;margin-bottom:10px;}
 .score-field{display:flex;flex-direction:column;align-items:center;}
-.score-team-label{font-size:12px;color:#888;margin-bottom:6px;text-align:center;}
-.score-field input{width:100%;text-align:center;font-size:36px;font-weight:700;border:1px solid #e0e0e0;border-radius:8px;padding:12px 8px;background:#fff;color:#111;font-family:inherit;}
-.score-field input:focus{outline:none;border-color:#1a5c2a;box-shadow:0 0 0 3px rgba(26,92,42,.1);}
-.colon{font-size:28px;font-weight:500;color:#bbb;text-align:center;padding-bottom:14px;}
-.score-preview{text-align:center;font-size:13px;color:#888;}
-.score-preview b{color:#1a5c2a;font-weight:700;}
+.score-team-label{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:6px;display:flex;align-items:center;gap:5px;}
+.score-team-label img{width:20px;height:15px;object-fit:cover;border-radius:2px;border:1px solid rgba(255,255,255,0.2);}
+.score-field input{width:100%;text-align:center;font-size:38px;font-weight:800;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 8px;background:#1a2236;color:#fff;font-family:inherit;}
+.score-field input:focus{outline:none;border-color:#f5c842;box-shadow:0 0 0 3px rgba(245,200,66,.15);}
+.colon{font-size:28px;font-weight:700;color:rgba(255,255,255,0.3);text-align:center;padding-bottom:14px;}
+.score-preview{text-align:center;font-size:13px;color:rgba(255,255,255,0.45);}
+.score-preview b{color:#f5c842;font-weight:700;}
+
+/* ── 폼 ── */
 .form-row{padding:0 1rem;margin-bottom:10px;}
-.form-label{font-size:12px;color:#888;margin-bottom:5px;}
-.form-row input,.form-row select{width:100%;border:1px solid #e0e0e0;border-radius:8px;padding:10px 12px;font-size:14px;background:#fff;color:#111;font-family:inherit;appearance:none;-webkit-appearance:none;}
+.form-label{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:5px;}
+.form-row input,.form-row select{width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 12px;font-size:14px;background:#111827;color:#fff;font-family:inherit;appearance:none;-webkit-appearance:none;}
 .form-row select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
-.form-row input:focus,.form-row select:focus{outline:none;border-color:#1a5c2a;}
-.submit-btn{display:block;width:calc(100% - 2rem);margin:.25rem 1rem 1rem;background:#1a5c2a;color:#fff;border:none;border-radius:8px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
+.form-row input:focus,.form-row select:focus{outline:none;border-color:#f5c842;}
+.form-row select option{background:#111827;}
+
+/* ── 제출 버튼 ── */
+.submit-btn{display:block;width:calc(100% - 2rem);margin:.25rem 1rem 1rem;background:linear-gradient(135deg,#1a3a6e,#c8102e);color:#fff;border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.02em;}
 .submit-btn:hover{opacity:.88;}
-.submit-btn:disabled{opacity:.5;cursor:not-allowed;}
+.submit-btn:disabled{opacity:.4;cursor:not-allowed;}
+
+/* ── 투표 목록 ── */
 .votes-list{padding:0 1rem;}
-.vote-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0f0f0;}
+.vote-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
 .vote-item:last-child{border-bottom:none;}
-.vote-left{display:flex;align-items:center;gap:8px;}
-.vote-avatar{width:30px;height:30px;border-radius:50%;background:#d4edda;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#1a5c2a;flex-shrink:0;}
-.vote-name{font-size:13px;font-weight:600;color:#111;}
-.vote-dept{font-size:11px;color:#aaa;}
-.vote-score{font-size:14px;font-weight:700;color:#111;background:#f5f5f5;padding:4px 10px;border-radius:8px;}
-.vote-score.win{color:#1a5c2a;background:#d4edda;}
-.empty-state{text-align:center;padding:2rem 0;color:#aaa;font-size:13px;line-height:1.8;}
-.winner-banner{border-radius:8px;padding:.75rem 1rem;margin:0 1rem 1rem;}
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;}
+.vote-left{display:flex;align-items:center;gap:8px;flex:1;}
+.vote-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#1a3a6e,#c8102e);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+.vote-name{font-size:13px;font-weight:600;color:#fff;}
+.vote-dept{font-size:11px;color:rgba(255,255,255,0.35);}
+.vote-right{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.vote-score{font-size:14px;font-weight:700;color:#fff;background:rgba(255,255,255,0.08);padding:4px 12px;border-radius:8px;}
+.vote-score.win{color:#f5c842;background:rgba(245,200,66,.15);border:1px solid rgba(245,200,66,.3);}
+.delete-btn{background:none;border:none;cursor:pointer;font-size:14px;color:rgba(255,255,255,0.15);padding:2px 4px;display:none;}
+.delete-btn:hover{color:#e53935;}
+.admin-mode .delete-btn{display:block;}
+.empty-state{text-align:center;padding:2.5rem 0;color:rgba(255,255,255,0.25);font-size:13px;line-height:1.9;}
+
+/* ── 배너 ── */
+.winner-banner{border-radius:10px;padding:.85rem 1rem;margin:0 1rem 1rem;}
+
+/* ── 모달 ── */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:200;align-items:center;justify-content:center;}
 .modal-overlay.show{display:flex;}
-.modal-card{background:#fff;border-radius:16px;padding:1.5rem;width:90%;max-width:320px;}
-.modal-title{font-size:16px;font-weight:700;color:#111;margin-bottom:3px;}
-.modal-sub{font-size:12px;color:#888;margin-bottom:1.25rem;}
-.account-box{background:#fffde7;border:1px solid #f5c842;border-radius:8px;padding:1rem;margin-bottom:1.25rem;text-align:center;}
-.account-bank{font-size:11px;color:#6b5200;margin-bottom:4px;}
-.account-num{font-size:22px;font-weight:700;color:#3d2e00;letter-spacing:.04em;margin-bottom:4px;}
-.account-holder{font-size:13px;color:#6b5200;}
-.account-amount{font-size:12px;color:#b8003e;font-weight:700;margin-top:8px;}
-.modal-confirm-btn{display:block;width:100%;background:#1a5c2a;color:#fff;border:none;border-radius:8px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
-.modal-cancel{display:block;width:100%;background:none;border:none;padding:10px;font-size:13px;color:#888;cursor:pointer;font-family:inherit;margin-top:4px;}
-.admin-tiny{margin:2rem 1rem 0;border-top:1px solid #eee;padding-top:1rem;}
-.admin-toggle{font-size:11px;color:#bbb;cursor:pointer;background:none;border:none;font-family:inherit;padding:0;}
+.modal-card{background:#111827;border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:1.5rem;width:90%;max-width:320px;}
+.modal-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:3px;}
+.modal-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:1.25rem;}
+.account-box{background:rgba(245,200,66,0.08);border:1px solid rgba(245,200,66,0.3);border-radius:10px;padding:1rem;margin-bottom:1.25rem;text-align:center;}
+.account-bank{font-size:11px;color:#f5c842;margin-bottom:4px;font-weight:600;}
+.account-num{font-size:22px;font-weight:700;color:#fff;letter-spacing:.04em;margin-bottom:4px;}
+.account-holder{font-size:13px;color:rgba(255,255,255,0.6);}
+.account-amount{font-size:12px;color:#f5c842;font-weight:700;margin-top:8px;}
+.modal-confirm-btn{display:block;width:100%;background:linear-gradient(135deg,#1a3a6e,#c8102e);color:#fff;border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
+.modal-cancel{display:block;width:100%;background:none;border:none;padding:10px;font-size:13px;color:rgba(255,255,255,0.35);cursor:pointer;font-family:inherit;margin-top:4px;}
+
+/* ── 관리자 ── */
+.admin-tiny{margin:2rem 1rem 0;border-top:1px solid rgba(255,255,255,0.06);padding-top:1rem;}
+.admin-toggle{font-size:11px;color:rgba(255,255,255,0.2);cursor:pointer;background:none;border:none;font-family:inherit;padding:0;}
 .admin-panel{margin-top:12px;}
-.admin-input{width:100%;border:1px solid #e0e0e0;border-radius:8px;padding:8px 10px;font-size:13px;background:#fff;color:#111;margin-bottom:6px;font-family:inherit;}
-.admin-input:focus{outline:none;border-color:#1a5c2a;}
-.admin-btn{display:block;width:100%;background:#f5f5f5;color:#111;border:1px solid #e0e0e0;border-radius:8px;padding:8px;font-size:12px;cursor:pointer;margin-bottom:6px;font-family:inherit;}
-.admin-btn:hover{border-color:#1a5c2a;}
-.danger-btn{color:#b8003e;border-color:#f5c1c1;}
+.admin-input{width:100%;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 10px;font-size:13px;background:#111827;color:#fff;margin-bottom:6px;font-family:inherit;}
+.admin-input:focus{outline:none;border-color:#f5c842;}
+.admin-btn{display:block;width:100%;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px;font-size:12px;cursor:pointer;margin-bottom:6px;font-family:inherit;}
+.admin-btn:hover{border-color:#f5c842;}
+.danger-btn{color:#e57373;border-color:rgba(229,115,115,0.3);}
 .result-row{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin-bottom:6px;}
-.result-row input{text-align:center;font-size:18px;font-weight:700;border:1px solid #e0e0e0;border-radius:8px;padding:8px;background:#fff;color:#111;width:100%;font-family:inherit;}
-.result-colon{font-size:18px;color:#bbb;text-align:center;}
-.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a3a20;color:#fff;padding:10px 20px;border-radius:99px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;white-space:nowrap;}
+.result-row input{text-align:center;font-size:18px;font-weight:700;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px;background:#111827;color:#fff;width:100%;font-family:inherit;}
+.result-colon{font-size:18px;color:rgba(255,255,255,0.3);text-align:center;}
+.admin-badge{display:inline-block;background:rgba(245,200,66,0.15);color:#f5c842;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px;}
+
+/* ── 토스트 ── */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a2744;color:#fff;border:1px solid rgba(255,255,255,0.15);padding:10px 20px;border-radius:99px;font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;white-space:nowrap;}
 .toast.show{opacity:1;}
 .live-dot{display:inline-block;width:6px;height:6px;background:#4caf50;border-radius:50%;margin-right:5px;animation:blink 1.2s infinite;vertical-align:middle;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
-.loading{text-align:center;padding:1.5rem;color:#aaa;font-size:13px;}
+.loading{text-align:center;padding:1.5rem;color:rgba(255,255,255,0.25);font-size:13px;}
+.toto-title-wrap{margin-top:14px;text-align:center;}
+.toto-title-label{font-size:10px;font-weight:600;color:rgba(255,255,255,0.4);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:5px;}
+.toto-title-main{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.01em;text-shadow:0 2px 12px rgba(0,0,0,0.4);}
+.toto-title-main span{color:#f5c842;}
+.toto-title-deco{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:6px;}
+.toto-title-deco::before,.toto-title-deco::after{content:'';display:block;height:1px;width:48px;background:linear-gradient(90deg,transparent,rgba(245,200,66,0.6));}
+.toto-title-deco::after{background:linear-gradient(90deg,rgba(245,200,66,0.6),transparent);}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="pitch-header">
-    <svg viewBox="0 0 420 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
-      <rect width="420" height="90" fill="#1a5c2a"/>
-      <rect x="1" y="1" width="418" height="88" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
-      <line x1="210" y1="1" x2="210" y2="89" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-      <circle cx="210" cy="45" r="28" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-      <circle cx="210" cy="45" r="2.5" fill="rgba(255,255,255,0.3)"/>
-      <rect x="1" y="22" width="44" height="46" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-      <rect x="375" y="22" width="44" height="46" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-      <rect x="1" y="34" width="18" height="22" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-      <rect x="401" y="34" width="18" height="22" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-    </svg>
-    <div class="pitch-content">
-      <div class="pitch-badge">⚽ 사내 스코어 예측 이벤트</div>
-      <div class="pitch-title">한화손보 GA지원팀 토토</div>
-      <div class="pitch-sub">대한민국 vs 체코 · 2026 FIFA 월드컵</div>
-      <div class="pitch-meta">
-        <div class="pitch-meta-item">🕙 오전 11:00 킥오프</div>
-        <div class="pitch-meta-item">💰 1인당 10,000원</div>
-      </div>
-    </div>
-  </div>
+<div class="wrap" id="main-wrap">
 
-  <div class="match-card">
-    <div class="match-vs">
-      <div class="match-team">
-        <div class="match-flag">🇰🇷</div>
-        <div class="match-name">대한민국</div>
-        <div class="match-rank">FIFA 22위</div>
+  <!-- 히어로 헤더 -->
+  <div class="hero">
+    <!-- SVG 배경 패턴 -->
+    <svg class="hero-bg" viewBox="0 0 420 180" xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:100%;height:100%;">
+      <circle cx="60" cy="90" r="70" fill="none" stroke="white" stroke-width="1"/>
+      <circle cx="360" cy="90" r="70" fill="none" stroke="white" stroke-width="1"/>
+      <line x1="210" y1="0" x2="210" y2="180" stroke="white" stroke-width="0.8"/>
+      <circle cx="210" cy="90" r="50" fill="none" stroke="white" stroke-width="0.8"/>
+      <circle cx="210" cy="90" r="3" fill="white"/>
+      <rect x="0" y="40" width="60" height="100" fill="none" stroke="white" stroke-width="0.8"/>
+      <rect x="360" y="40" width="60" height="100" fill="none" stroke="white" stroke-width="0.8"/>
+    </svg>
+
+    <div class="hero-content">
+      <div class="wc-badge">
+        <span class="wc-badge-dot"></span>
+        2026 FIFA World Cup · Group A
       </div>
-      <div class="vs-wrap">
-        <div class="vs-text">VS</div>
-        <div class="kickoff-pill">11:00 AM</div>
+
+      <div class="matchup">
+        <div class="matchup-team">
+          <img class="matchup-flag" src="https://flagcdn.com/w160/kr.png" alt="대한민국">
+          <div class="matchup-name">대한민국</div>
+          <div class="matchup-rank">FIFA 25위</div>
+        </div>
+        <div class="matchup-center">
+          <div class="vs-text">VS</div>
+          <div class="kickoff-badge">6.19 (금) 10:00</div>
+        </div>
+        <div class="matchup-team">
+          <img class="matchup-flag" src="https://flagcdn.com/w160/mx.png" alt="멕시코">
+          <div class="matchup-name">멕시코</div>
+          <div class="matchup-rank">FIFA 14위</div>
+        </div>
       </div>
-      <div class="match-team">
-        <div class="match-flag">🇨🇿</div>
-        <div class="match-name">체코</div>
-        <div class="match-rank">FIFA 40위</div>
+
+      <div class="hero-divider"></div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">🏟️ 에스타디오 과달라하라</div>
+        <div class="hero-meta-item">💰 1인당 10,000원</div>
+      </div>
+      <div class="toto-title-wrap">
+        <div class="toto-title-label">Official Match Prediction</div>
+        <div class="toto-title-main">한화손보 GA지원팀 <span>토토</span></div>
+        <div class="toto-title-deco"></div>
       </div>
     </div>
-    <div class="match-footer">2026 FIFA 월드컵 · 그룹 스테이지</div>
   </div>
 
   <div class="pool-row">
@@ -152,22 +198,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <button class="tab-btn" onclick="switchTab('results')"><span class="live-dot"></span>실시간 현황</button>
   </div>
 
+  <!-- 투표 탭 -->
   <div id="tab-vote">
     <div class="section-title">스코어 예측</div>
     <div class="score-input-wrap">
       <div class="score-row">
         <div class="score-field">
-          <div class="score-team-label">🇰🇷 대한민국</div>
+          <div class="score-team-label">
+            <img src="https://flagcdn.com/w40/kr.png" alt="🇰🇷"> 대한민국
+          </div>
           <input type="number" id="score-home" min="0" max="20" placeholder="0" oninput="updatePreview()">
         </div>
         <div class="colon">:</div>
         <div class="score-field">
-          <div class="score-team-label">🇨🇿 체코</div>
+          <div class="score-team-label">
+            <img src="https://flagcdn.com/w40/mx.png" alt="🇲🇽"> 멕시코
+          </div>
           <input type="number" id="score-away" min="0" max="20" placeholder="0" oninput="updatePreview()">
         </div>
       </div>
       <div class="score-preview" id="score-preview">점수를 입력하세요</div>
     </div>
+
     <div class="form-row">
       <div class="form-label">파트 선택</div>
       <select id="voter-dept">
@@ -181,34 +233,38 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="form-label">이름</div>
       <input type="text" id="voter-name" placeholder="이름 입력" maxlength="20">
     </div>
-    <button class="submit-btn" id="submit-btn" onclick="submitVote()">10,000원 내고 예측 등록</button>
+    <button class="submit-btn" id="submit-btn" onclick="submitVote()">⚽ 10,000원 내고 예측 등록</button>
   </div>
 
+  <!-- 현황 탭 -->
   <div id="tab-results" style="display:none;">
     <div id="winner-area"></div>
-    <div class="section-title">전체 투표 현황</div>
+    <div class="section-title">전체 투표 현황 <span id="admin-hint" style="display:none;"><span class="admin-badge">관리자</span> 🗑️ 개별 삭제 가능</span></div>
     <div class="votes-list" id="votes-list"><div class="loading">불러오는 중...</div></div>
   </div>
 
+  <!-- 관리자 -->
   <div class="admin-tiny">
     <button class="admin-toggle" onclick="toggleAdmin()">관리자 ···</button>
     <div id="admin-panel" style="display:none;" class="admin-panel">
       <input type="password" class="admin-input" id="admin-pw" placeholder="비밀번호">
       <button class="admin-btn" onclick="verifyAdmin()">확인</button>
       <div id="admin-controls" style="display:none;">
-        <div style="font-size:11px;color:#aaa;margin-bottom:6px;">최종 결과 입력</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:6px;">최종 결과 입력</div>
         <div class="result-row">
           <input type="number" id="result-home" min="0" max="20" placeholder="🇰🇷">
           <div class="result-colon">:</div>
-          <input type="number" id="result-away" min="0" max="20" placeholder="🇨🇿">
+          <input type="number" id="result-away" min="0" max="20" placeholder="🇲🇽">
         </div>
         <button class="admin-btn" onclick="setResult()">결과 확정 및 당첨자 발표</button>
-        <button class="admin-btn danger-btn" onclick="resetAll()">투표 초기화</button>
+        <button class="admin-btn" onclick="goToResults()">실시간 현황에서 삭제하기</button>
+        <button class="admin-btn danger-btn" onclick="resetAll()">투표 전체 초기화</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- 계좌 모달 -->
 <div class="modal-overlay" id="account-modal">
   <div class="modal-card">
     <div class="modal-title">입금 안내</div>
@@ -219,7 +275,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="account-holder">황주현</div>
       <div class="account-amount">입금액: 10,000원</div>
     </div>
-    <div style="font-size:12px;color:#888;margin-bottom:1rem;text-align:center;">입금 후 확인 버튼을 눌러 예측을 등록하세요</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem;text-align:center;">입금 후 확인 버튼을 눌러 예측을 등록하세요</div>
     <button class="modal-confirm-btn" onclick="confirmVote()">입금 완료, 예측 등록하기</button>
     <button class="modal-cancel" onclick="closeModal()">취소</button>
   </div>
@@ -228,203 +284,167 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div class="toast" id="toast"></div>
 
 <script>
-// ★ 여기 한 줄만 교체하세요 (JSONBin Secret Key)
 const API_KEY = "$2a$10$UM5GTb0PzchDqj64cVKVBOVWg8r1EOvbvF749zM54MimO5xvSlhNG";
-// ★★★★★★★★★★★★★★★★★★★★★★★★★★
-
-const BIN_NAME = "hanwha-ga-toto";
+const BIN_ID = "6a2b5b4eda38895dfeb1d32a";
 const ADMIN_PW = "hanwha2026";
 const POLL_MS = 5000;
 
-let binId = "6a2b5b4eda38895dfeb1d32a";
-let allVotes = [];
-let finalResult = null;
-let pendingVote = null;
-let adminOpen = false;
-let polling = null;
+let allVotes = [], finalResult = null, pendingVote = null, adminOpen = false, isAdmin = false;
 
-const headers = {
-  "Content-Type": "application/json",
-  "X-Master-Key": API_KEY,
-  "X-Bin-Versioning": "false"
-};
+const headers = {"Content-Type":"application/json","X-Master-Key":API_KEY,"X-Bin-Versioning":"false"};
 
-async function initBin() {
-  try {
-    const res = await fetch("https://api.jsonbin.io/v3/b", {
-      method: "POST",
-      headers: { ...headers, "X-Bin-Name": BIN_NAME, "X-Bin-Private": "true" },
-      body: JSON.stringify({ votes: [], result: null })
-    });
+async function loadData(){
+  try{
+    const res = await fetch("https://api.jsonbin.io/v3/b/"+BIN_ID+"/latest",{headers});
     const data = await res.json();
-    binId = data.metadata.id;
-    localStorage.setItem("toto_bin_id", binId);
-  } catch(e) { showToast("초기화 실패: API 키를 확인하세요"); }
+    allVotes = data.record.votes||[];
+    finalResult = data.record.result||null;
+    renderStats(); renderVotesList();
+  }catch(e){}
+}
+async function saveData(){
+  await fetch("https://api.jsonbin.io/v3/b/"+BIN_ID,{method:"PUT",headers,body:JSON.stringify({votes:allVotes,result:finalResult})});
 }
 
-async function ensureBin() {
-  // bin ID is fixed
+function fmt(n){return n.toLocaleString("ko-KR")+"원";}
+function scoreKey(h,a){return h+"-"+a;}
+
+function updatePreview(){
+  const h=document.getElementById("score-home").value;
+  const a=document.getElementById("score-away").value;
+  const el=document.getElementById("score-preview");
+  if(h===""&&a===""){el.innerHTML="점수를 입력하세요";return;}
+  el.innerHTML="🇰🇷 대한민국 <b>"+(h||"?")+" : "+(a||"?")+"</b> 멕시코 🇲🇽";
 }
 
-async function loadData() {
-  await ensureBin();
-  if (!binId) return;
-  try {
-    const res = await fetch("https://api.jsonbin.io/v3/b/" + binId + "/latest", { headers });
-    const data = await res.json();
-    allVotes = data.record.votes || [];
-    finalResult = data.record.result || null;
-    renderStats();
-    renderVotesList();
-  } catch(e) {}
-}
-
-async function saveData() {
-  if (!binId) return;
-  await fetch("https://api.jsonbin.io/v3/b/" + binId, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify({ votes: allVotes, result: finalResult })
-  });
-}
-
-function fmt(n) { return n.toLocaleString("ko-KR") + "원"; }
-function scoreKey(h, a) { return h + "-" + a; }
-function timeAgo(ts) {
-  const d = Math.floor((Date.now() - ts) / 1000);
-  if (d < 60) return "방금 전";
-  if (d < 3600) return Math.floor(d / 60) + "분 전";
-  return Math.floor(d / 3600) + "시간 전";
-}
-
-function updatePreview() {
-  const h = document.getElementById("score-home").value;
-  const a = document.getElementById("score-away").value;
-  const el = document.getElementById("score-preview");
-  if (h === "" && a === "") { el.innerHTML = "점수를 입력하세요"; return; }
-  el.innerHTML = "🇰🇷 대한민국 <b>" + (h||"?") + " : " + (a||"?") + "</b> 체코 🇨🇿";
-}
-
-function submitVote() {
-  const name = document.getElementById("voter-name").value.trim();
-  const dept = document.getElementById("voter-dept").value;
-  const h = document.getElementById("score-home").value;
-  const a = document.getElementById("score-away").value;
-  if (!dept) { showToast("파트를 선택해주세요"); return; }
-  if (!name) { showToast("이름을 입력해주세요"); return; }
-  if (h === "" || a === "") { showToast("스코어를 입력해주세요"); return; }
-  if (allVotes.find(v => v.dept + "/" + v.name === dept + "/" + name)) {
-    showToast("이미 투표하셨습니다 (" + name + ")"); return;
-  }
-  pendingVote = { name, dept, h: parseInt(h), a: parseInt(a), ts: Date.now() };
+function submitVote(){
+  const name=document.getElementById("voter-name").value.trim();
+  const dept=document.getElementById("voter-dept").value;
+  const h=document.getElementById("score-home").value;
+  const a=document.getElementById("score-away").value;
+  if(!dept){showToast("파트를 선택해주세요");return;}
+  if(!name){showToast("이름을 입력해주세요");return;}
+  if(h===""||a===""){showToast("스코어를 입력해주세요");return;}
+  if(allVotes.find(v=>v.dept+"/"+v.name===dept+"/"+name)){showToast("이미 투표하셨습니다 ("+name+")");return;}
+  pendingVote={name,dept,h:parseInt(h),a:parseInt(a),ts:Date.now()};
   document.getElementById("account-modal").classList.add("show");
 }
 
-async function confirmVote() {
-  if (!pendingVote) return;
-  const btn = document.getElementById("submit-btn");
-  btn.disabled = true;
+async function confirmVote(){
+  if(!pendingVote)return;
+  const btn=document.getElementById("submit-btn");
+  btn.disabled=true;
   allVotes.push(pendingVote);
   await saveData();
-  showToast("예측 등록 완료! 🎉 " + pendingVote.name + " (" + pendingVote.h + ":" + pendingVote.a + ")");
-  document.getElementById("voter-name").value = "";
-  document.getElementById("voter-dept").value = "";
-  document.getElementById("score-home").value = "";
-  document.getElementById("score-away").value = "";
+  showToast("예측 등록 완료! 🎉 "+pendingVote.name+" ("+pendingVote.h+":"+pendingVote.a+")");
+  document.getElementById("voter-name").value="";
+  document.getElementById("voter-dept").value="";
+  document.getElementById("score-home").value="";
+  document.getElementById("score-away").value="";
   updatePreview();
-  pendingVote = null;
-  btn.disabled = false;
+  pendingVote=null; btn.disabled=false;
   document.getElementById("account-modal").classList.remove("show");
-  renderStats();
-  renderVotesList();
+  renderStats(); renderVotesList();
 }
 
-function closeModal() {
-  pendingVote = null;
-  document.getElementById("account-modal").classList.remove("show");
+function closeModal(){pendingVote=null;document.getElementById("account-modal").classList.remove("show");}
+
+function renderStats(){
+  const n=allVotes.length;
+  document.getElementById("total-participants").textContent=n+"명";
+  document.getElementById("total-prize").textContent=fmt(n*10000);
 }
 
-function renderStats() {
-  const n = allVotes.length;
-  document.getElementById("total-participants").textContent = n + "명";
-  document.getElementById("total-prize").textContent = fmt(n * 10000);
+async function deleteVote(ts){
+  if(!confirm("이 투표를 삭제할까요?"))return;
+  allVotes=allVotes.filter(v=>v.ts!==ts);
+  await saveData();
+  renderStats(); renderVotesList();
+  showToast("삭제 완료!");
 }
 
-function renderVotesList() {
-  const el = document.getElementById("votes-list");
-  const wa = document.getElementById("winner-area");
-  if (!el) return;
-  if (allVotes.length === 0) {
-    el.innerHTML = '<div class="empty-state">아직 투표가 없습니다.<br>첫 번째 예측을 등록해보세요!</div>';
-    wa.innerHTML = ""; return;
+function renderVotesList(){
+  const el=document.getElementById("votes-list");
+  const wa=document.getElementById("winner-area");
+  if(!el)return;
+  if(allVotes.length===0){
+    el.innerHTML='<div class="empty-state">아직 투표가 없습니다.<br>첫 번째 예측을 등록해보세요!</div>';
+    wa.innerHTML="";return;
   }
-  const sorted = [...allVotes].sort((a, b) => b.ts - a.ts);
-  const winKey = finalResult ? scoreKey(finalResult.h, finalResult.a) : null;
-  el.innerHTML = sorted.map(v => {
-    const isWin = winKey && scoreKey(v.h, v.a) === winKey;
-    return '<div class="vote-item"><div class="vote-left"><div class="vote-avatar">' +
-      v.name.slice(0, 2) + '</div><div><div class="vote-name">' + v.name +
-      '</div><div class="vote-dept">' + v.dept + '</div></div></div>' +
-      '<div class="vote-score' + (isWin ? ' win' : '') + '">' + v.h + ' : ' + v.a +
-      (isWin ? ' 🎉' : '') + '</div></div>';
+  const sorted=[...allVotes].sort((a,b)=>b.ts-a.ts);
+  const winKey=finalResult?scoreKey(finalResult.h,finalResult.a):null;
+  el.innerHTML=sorted.map(v=>{
+    const isWin=winKey&&scoreKey(v.h,v.a)===winKey;
+    return '<div class="vote-item">'+
+      '<div class="vote-left"><div class="vote-avatar">'+v.name.slice(0,2)+'</div>'+
+      '<div><div class="vote-name">'+v.name+'</div><div class="vote-dept">'+v.dept+'</div></div></div>'+
+      '<div class="vote-right">'+
+      '<div class="vote-score'+(isWin?' win':'')+'">'+v.h+' : '+v.a+(isWin?' 🎉':'')+'</div>'+
+      '<button class="delete-btn" onclick="deleteVote('+v.ts+')">🗑️</button>'+
+      '</div></div>';
   }).join('');
-  if (finalResult) {
-    const winners = allVotes.filter(v => v.h === finalResult.h && v.a === finalResult.a);
-    if (winners.length > 0) {
-      const prize = Math.floor(allVotes.length * 10000 / winners.length);
-      wa.innerHTML = '<div class="winner-banner" style="background:#d4edda;border:1px solid #82c99a;">' +
-        '<div style="font-size:13px;color:#0d3b1a;">🏆 최종 결과: <b>' + finalResult.h + ':' + finalResult.a +
-        '</b><br>당첨자 ' + winners.length + '명 · 1인당 ' + fmt(prize) + ' 수령!</div></div>';
-    } else {
-      wa.innerHTML = '<div class="winner-banner" style="background:#fff0f0;border:1px solid #f5a1a1;">' +
-        '<div style="font-size:13px;color:#8b1a1a;">😢 최종 결과: ' + finalResult.h + ':' + finalResult.a +
-        ' — 정확히 맞춘 분이 없습니다.</div></div>';
+
+  if(finalResult){
+    const winners=allVotes.filter(v=>v.h===finalResult.h&&v.a===finalResult.a);
+    if(winners.length>0){
+      const prize=Math.floor(allVotes.length*10000/winners.length);
+      wa.innerHTML='<div class="winner-banner" style="background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.3);">'+
+        '<div style="font-size:13px;color:#f5c842;">🏆 최종 결과: <b>'+finalResult.h+':'+finalResult.a+
+        '</b><br><span style="color:#fff;">당첨자 '+winners.length+'명 · 1인당 '+fmt(prize)+' 수령!</span></div></div>';
+    }else{
+      wa.innerHTML='<div class="winner-banner" style="background:rgba(229,115,115,0.1);border:1px solid rgba(229,115,115,0.3);">'+
+        '<div style="font-size:13px;color:#e57373;">😢 최종 결과: '+finalResult.h+':'+finalResult.a+' — 정확히 맞춘 분이 없습니다.</div></div>';
     }
-  } else { wa.innerHTML = ""; }
+  }else{wa.innerHTML="";}
 }
 
-function switchTab(tab) {
-  ["vote", "results"].forEach(t => document.getElementById("tab-" + t).style.display = "none");
-  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-  document.getElementById("tab-" + tab).style.display = "";
+function switchTab(tab){
+  ["vote","results"].forEach(t=>document.getElementById("tab-"+t).style.display="none");
+  document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+  document.getElementById("tab-"+tab).style.display="";
   document.querySelectorAll(".tab-btn")[["vote","results"].indexOf(tab)].classList.add("active");
 }
 
-function showToast(msg) {
-  const t = document.getElementById("toast");
-  t.textContent = msg; t.classList.add("show");
-  setTimeout(() => t.classList.remove("show"), 2500);
+function showToast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg;t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2500);
 }
 
-function toggleAdmin() {
-  adminOpen = !adminOpen;
-  document.getElementById("admin-panel").style.display = adminOpen ? "" : "none";
-}
-function verifyAdmin() {
-  if (document.getElementById("admin-pw").value === ADMIN_PW) {
-    document.getElementById("admin-controls").style.display = "";
+function toggleAdmin(){adminOpen=!adminOpen;document.getElementById("admin-panel").style.display=adminOpen?"":"none";}
+
+function goToResults(){switchTab('results');showToast("🗑️ 버튼으로 개별 삭제하세요");}
+
+function verifyAdmin(){
+  if(document.getElementById("admin-pw").value===ADMIN_PW){
+    document.getElementById("admin-controls").style.display="";
+    isAdmin=true;
+    document.getElementById("main-wrap").classList.add("admin-mode");
+    document.getElementById("admin-hint").style.display="inline";
     showToast("관리자 모드 활성화");
-  } else { showToast("비밀번호가 틀렸습니다"); }
+  }else{showToast("비밀번호가 틀렸습니다");}
 }
-async function setResult() {
-  const h = parseInt(document.getElementById("result-home").value);
-  const a = parseInt(document.getElementById("result-away").value);
-  if (isNaN(h) || isNaN(a)) { showToast("결과를 입력해주세요"); return; }
-  finalResult = { h, a };
+
+async function setResult(){
+  const h=parseInt(document.getElementById("result-home").value);
+  const a=parseInt(document.getElementById("result-away").value);
+  if(isNaN(h)||isNaN(a)){showToast("결과를 입력해주세요");return;}
+  finalResult={h,a};
   await saveData();
-  showToast("결과 확정: " + h + ":" + a + " 🏆");
+  showToast("결과 확정: "+h+":"+a+" 🏆");
   switchTab("results");
 }
-async function resetAll() {
-  if (!confirm("모든 투표를 초기화할까요?")) return;
-  allVotes = []; finalResult = null;
-  // keep fixed bin ID
-  renderStats(); renderVotesList();
+
+async function resetAll(){
+  if(!confirm("모든 투표를 초기화할까요?"))return;
+  allVotes=[];finalResult=null;
+  await saveData();
+  renderStats();renderVotesList();
   showToast("초기화 완료");
 }
 
 loadData();
-setInterval(loadData, POLL_MS);
+setInterval(loadData,POLL_MS);
 </script>
 </body>
 </html>
